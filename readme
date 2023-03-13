@@ -1,0 +1,32 @@
+Steps:
+1: Create a package.json file using "npm init".
+2: Install cypress (npm i cypress --save-dev)
+3: In order to launch the cypress app use (npx cypress open)
+4: This opens the cypress app
+5: To write test cases follow the doc "https://docs.cypress.io/guides/overview/why-cypress"
+6: To export results we need install "Tresult repoter"
+  "npm install cypress-tesults-reporter --save"
+7: Configure the Tresult reporter as follows
+  a: Create a new js file
+  b: add the bellow details
+     "const cypress = require('cypress')
+      const tesults = require('cypress-tesults-reporter');
+
+      cypress.run({
+        // specs to run here
+        spec: './cypress/e2e/test.cy.js'
+      })
+      .then((results) => {
+        const args = {
+          target: 'token',
+        }
+        tesults.results(results, args);
+      })
+      .catch((err) => {
+      console.error(err)
+      })" 
+
+8: In order to export results "node filename.js"  
+   Ex: "node runner.js"
+   This will export the test results as a vid and in case of any failed takes screenshots as well
+
